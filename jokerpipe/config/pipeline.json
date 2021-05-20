@@ -1,0 +1,88 @@
+{
+  "name": "redbox",
+  "author": "kede",
+  "group": "technology-platform",
+  "projects": [
+    {
+      "id": "keep-redbox",
+      "path": "./src/Keep.Redbox",
+      "pack": "nuget"
+    },
+    {
+      "id": "keep-redbox-redis",
+      "path": "./src/Keep.Redbox.Redis",
+      "pack": "nuget"
+    },
+    {
+      "id": "keep-redbox-sqlserver",
+      "path": "./src/Keep.Redbox.SqlServer",
+      "pack": "nuget"
+    }
+  ],
+  "solution": {
+    "path": "./Redbox.sln",
+    "release": true,
+    "toolType": "dotnet",
+    "projectIds": [
+      "keep-redbox",
+      "keep-redbox-redis",
+      "keep-redbox-sqlserver"
+    ]
+  },
+  "notice": {
+    "dingTalk": {
+      //钉钉机器人Token
+      "accessToken": "f427165f27444e27975ade327bc89e1a5193236ed9c7c9a845da55bd8080f0d2",
+      //需要被@组员的手机号
+      "ats": {
+        "Development": [
+          "18516532013"
+        ]
+      }
+    }
+  },
+  "qa": {
+    "enable": false
+  },
+  "targets": {},
+  "sources": {
+    // "test": [
+    //   {
+    //     "source": "http://proget.kede.net/nuget/test/",
+    //     "credentialId": "0a8aaec1-722c-4805-bd38-5f7626a9faa3",
+    //     "urls": [
+    //       "http://proget.kede.net/feeds/test/Keep/versions"
+    //     ]
+    //   }
+    // ],
+    "alpha": [
+      {
+        "source": "http://proget.kede.net/nuget/alpha/",
+        "credentialId": "0a8aaec1-722c-4805-bd38-5f7626a9faa3",
+        "urls": [
+          "http://proget.kede.net/feeds/alpha/Keep.Redbox/versions",
+          "http://proget.kede.net/feeds/alpha/Keep.Redbox.Redis/versions",
+          "http://proget.kede.net/feeds/alpha/Keep.Redbox.SqlServer/versions"
+        ]
+      }
+    ],
+    "default": [
+      {
+        "source": "http://proget.kede.net/nuget/public/",
+        "credentialId": "0a8aaec1-722c-4805-bd38-5f7626a9faa3",
+        "urls": [
+          "http://proget.kede.net/feeds/public/Keep.Redbox/versions",
+          "http://proget.kede.net/feeds/public/Keep.Redbox.Redis/versions",
+          "http://proget.kede.net/feeds/public/Keep.Redbox.SqlServer/versions"
+        ]
+      }
+    ]
+  },
+  "switch": {
+    "restore": true,
+    "build": true,
+    "QA": "auto",
+    "publish": "auto",
+    "deploy": "auto"
+  }
+}

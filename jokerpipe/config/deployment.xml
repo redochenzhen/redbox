@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Deployment>
+  <!--你所在的小组，可能是BusinessPlatform, Project-Kede等等-->
+  <Group></Group>
+  <!--备份保存数量，可选，默认是10-->
+  <Keep>10</Keep>
+  <Services>
+
+  </Services>
+  <!--某个环境下个项目共用的配置-->
+  <Settings>
+
+  </Settings>
+</Deployment>
