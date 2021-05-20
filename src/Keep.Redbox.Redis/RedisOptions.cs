@@ -4,7 +4,7 @@
     {
         public const string CONFIG_PREFIX = "redbox:redis";
 
-        public const string CONNECTION_NAME = "redis";
+        public const string CONNECTION_NAME = "redisconnection";
 
         public string ConnectionString { get; set; }
 
