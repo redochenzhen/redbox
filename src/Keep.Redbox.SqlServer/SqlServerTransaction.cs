@@ -16,6 +16,7 @@ namespace Keep.Redbox.SqlServer
         {
             if (DbTransaction == null) return;
             DbTransaction.Commit();
+            //throw new Exception("dummy crash");
             OnCommitted();
         }
 

@@ -42,9 +42,9 @@ namespace Keep.Redbox.Internal
                 }
             }
             value = valueFunc();
-            using (var cache = _cacheFactory.CreateClient())
+            using (var client = _cacheFactory.CreateClient())
             {
-                cache.Set(key, value);
+                client.Set(key, value);
             }
             return value;
         }
@@ -67,9 +67,9 @@ namespace Keep.Redbox.Internal
 #if NETSTANDARD2_1
             await
 #endif
-            using (var cache = _cacheFactory.CreateClient())
+            using (var client = _cacheFactory.CreateClient())
             {
-                await cache.SetAsync(key, value);
+                await client.SetAsync(key, value);
             }
             return value;
         }

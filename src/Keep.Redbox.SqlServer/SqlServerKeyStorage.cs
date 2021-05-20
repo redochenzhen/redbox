@@ -28,7 +28,7 @@ namespace Keep.Redbox.SqlServer
             _boost = storageBoost;
         }
 
-        public async Task<List<string>> GetCandidateKeysAsync()
+        public async Task<List<RetryContext>> GetCandidateKeysAsync()
         {
             string sql = $@"
 SELECT TOP ({_redboxOptions.BatchCount}) [Id],[Key],[Retries]
@@ -37,7 +37,7 @@ FROM {_boost.FullTableName} WITH (readpast) WHERE
 [Retries] < {_redboxOptions.MaxFailedRetries} AND
 ([State] = {(int)KeyState.Failed} OR [State] = {(int)KeyState.Waiting})";
 
-            List<string> keys;
+            List<RetryContext> ctxLst;
             using (var conn = new SqlConnection(_options.ConnectionString))
             {
                 await conn.OpenAsync();
@@ -46,12 +46,17 @@ FROM {_boost.FullTableName} WITH (readpast) WHERE
                     cmd.CommandType = CommandType.Text;
                     cmd.CommandText = sql;
                     var reader = await cmd.ExecuteReaderAsync();
-                    keys = new List<string>();
+                    ctxLst = new List<RetryContext>();
                     while (await reader.ReadAsync())
                     {
-                        keys.Add((string)reader["Key"]);
+                        ctxLst.Add(new RetryContext
+                        {
+                            KeyId = (long)reader["Id"],
+                            Key = (string)reader["Key"],
+                            Retries = (int)reader["Retries"]
+                        });
                     }
-                    return keys;
+                    return ctxLst;
                 }
             }
         }
@@ -109,11 +114,14 @@ INSERT INTO {_boost.FullTableName} ({FIELD_LIST}) VALUES({FIELD_PARAM_LIST});";
             }
         }
 
-        public async Task<bool> UpdateStateAsync(string key, KeyState state)
+        public async Task<bool> UpdateKeyAsync(long id, KeyState state, int retries)
         {
             //TODO: use Id
             string sql = $@"
-UPDATE {_boost.FullTableName} SET [State] = {(int)state} WHERE [Key] = '{key}'";
+UPDATE {_boost.FullTableName} SET
+    [State] = {(int)state},
+    [Retries] = {retries}
+WHERE [Id] = {id}";
 
             using (var conn = new SqlConnection(_options.ConnectionString))
             {

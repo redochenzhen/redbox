@@ -31,18 +31,38 @@ namespace Keep.Redbox.Worker
 
         public async Task StartAsync(CancellationToken stoppingToken)
         {
-            for (; ; )
+            while (!stoppingToken.IsCancellationRequested)
             {
-                var keys = default(IEnumerable<string>);
+                var ctxLst = default(IEnumerable<RetryContext>);
                 try
                 {
-                    keys = await _keyStorage.GetCandidateKeysAsync();
+                    ctxLst = await _keyStorage.GetCandidateKeysAsync();
                     using (var client = _clientFactory.CreateClient())
                     {
-                        foreach (var key in keys)
+                        foreach (var ctx in ctxLst)
                         {
-                            await client.RemoveAsync(key, stoppingToken);
-                            await _keyStorage.UpdateStateAsync(key, KeyState.Succeeded);
+                            bool? exists = default;
+                            try
+                            {
+                                exists = await client.RemoveAsync(ctx.Key, stoppingToken);
+                            }
+                            catch (Exception ex)
+                            {
+                                _logger.LogError(ex, $"Failedt to removing key: [{ctx.Key}].");
+                                await _keyStorage.UpdateKeyAsync(ctx.KeyId, KeyState.Failed, ctx.Retries + 1);
+                            }
+                            if (exists.HasValue)
+                            {
+                                if (exists.Value)
+                                {
+                                    _logger.LogDebug($"Key: [{ctx.Key}] exists and has been removed.");
+                                }
+                                else
+                                {
+                                    _logger.LogDebug($"Key: [{ctx.Key}] does not exist. No need to retry.");
+                                }
+                                await _keyStorage.UpdateKeyAsync(ctx.KeyId, KeyState.Succeeded, ctx.Retries);
+                            }
                         }
                     }
                 }
@@ -50,7 +70,7 @@ namespace Keep.Redbox.Worker
                 {
                     _logger.LogError(ex, ex.Message);
                 }
-                await Task.Delay(RETRY_INTERVAL);
+                await Task.Delay(RETRY_INTERVAL, stoppingToken);
             }
         }
 

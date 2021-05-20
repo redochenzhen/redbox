@@ -13,8 +13,8 @@ namespace Keep.Redbox.Storage
 
         void StoreKeys(IEnumerable<string> keys, IDbTransaction dbTransaction = default);
 
-        Task<List<string>> GetCandidateKeysAsync();
+        Task<List<RetryContext>> GetCandidateKeysAsync();
 
-        Task<bool> UpdateStateAsync(string key, KeyState state);
+        Task<bool> UpdateKeyAsync(long id, KeyState state, int retries);
     }
 }
