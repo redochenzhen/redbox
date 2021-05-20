@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F306801B-B228-49C2-A7BA-3A8602EED133}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{5BED12E3-D025-41A9-A5D3-AD0729220DBC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Keep.Redbox", "src\Keep.Redbox\Keep.Redbox.csproj", "{3A1A15FC-BA21-4827-9EE0-48070EE01AEA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample.Redbox.Demo1", "samples\Sample.Redbox.Demo1\Sample.Redbox.Demo1.csproj", "{23B64357-8F5A-435B-96FC-56B1F2100FBC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Keep.Redbox.Redis", "src\Keep.Redbox.Redis\Keep.Redbox.Redis.csproj", "{30A4BD44-0EA0-4512-8F69-E8C9C218F482}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Keep.Redbox.SqlServer", "src\Keep.Redbox.SqlServer\Keep.Redbox.SqlServer.csproj", "{8E155DAB-13C5-4A6F-9CE0-C2A85524366E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Keep.Redbox.Memcached", "src\Keep.Redbox.Memcached\Keep.Redbox.Memcached.csproj", "{977558B0-CD14-4B39-9692-3CDF37DC4973}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A1A15FC-BA21-4827-9EE0-48070EE01AEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A1A15FC-BA21-4827-9EE0-48070EE01AEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A1A15FC-BA21-4827-9EE0-48070EE01AEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A1A15FC-BA21-4827-9EE0-48070EE01AEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{23B64357-8F5A-435B-96FC-56B1F2100FBC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{23B64357-8F5A-435B-96FC-56B1F2100FBC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{23B64357-8F5A-435B-96FC-56B1F2100FBC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{23B64357-8F5A-435B-96FC-56B1F2100FBC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30A4BD44-0EA0-4512-8F69-E8C9C218F482}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30A4BD44-0EA0-4512-8F69-E8C9C218F482}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30A4BD44-0EA0-4512-8F69-E8C9C218F482}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30A4BD44-0EA0-4512-8F69-E8C9C218F482}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E155DAB-13C5-4A6F-9CE0-C2A85524366E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E155DAB-13C5-4A6F-9CE0-C2A85524366E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E155DAB-13C5-4A6F-9CE0-C2A85524366E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E155DAB-13C5-4A6F-9CE0-C2A85524366E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{977558B0-CD14-4B39-9692-3CDF37DC4973}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{977558B0-CD14-4B39-9692-3CDF37DC4973}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{977558B0-CD14-4B39-9692-3CDF37DC4973}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{977558B0-CD14-4B39-9692-3CDF37DC4973}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3A1A15FC-BA21-4827-9EE0-48070EE01AEA} = {F306801B-B228-49C2-A7BA-3A8602EED133}
+		{23B64357-8F5A-435B-96FC-56B1F2100FBC} = {5BED12E3-D025-41A9-A5D3-AD0729220DBC}
+		{30A4BD44-0EA0-4512-8F69-E8C9C218F482} = {F306801B-B228-49C2-A7BA-3A8602EED133}
+		{8E155DAB-13C5-4A6F-9CE0-C2A85524366E} = {F306801B-B228-49C2-A7BA-3A8602EED133}
+		{977558B0-CD14-4B39-9692-3CDF37DC4973} = {F306801B-B228-49C2-A7BA-3A8602EED133}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C39B865F-2280-4E80-95D0-A9682F4A25FD}
+	EndGlobalSection
+EndGlobal
