@@ -1,4 +1,8 @@
-# ***Keep.Redbox*
+<p align="center">
+  <img height="128" src="https://github.com/redochenzhen/redbox/blob/master/images/icon.png">
+</p>
+
+# **Keep.Redbox**
 
 ## 简介
 An eventually-consistancy distributed cache solution (mailbox pattern) for asp.net core.

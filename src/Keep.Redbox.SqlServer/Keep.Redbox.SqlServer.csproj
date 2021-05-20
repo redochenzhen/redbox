@@ -3,6 +3,9 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <PackageIcon>icon.png</PackageIcon>
+    <Authors>Zhen,Kede</Authors>
+    <Company>Kede</Company>
+    <PackageProjectUrl>https://github.com/redochenzhen/redbox</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>

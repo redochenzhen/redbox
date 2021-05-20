@@ -5,6 +5,10 @@
     <PackageIcon>icon.png</PackageIcon>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <Version>1.0.0</Version>
+    <Authors>Zhen,Kede</Authors>
+    <Company>Kede</Company>
+    <Description>An eventually-consistancy distributed  cache solution (mailbox pattern) for asp.net core.</Description>
+    <PackageProjectUrl>https://github.com/redochenzhen/redbox</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
