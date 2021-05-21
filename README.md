@@ -73,23 +73,7 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-### 针对场景1
-```cs
-var result = await _redbox.GetAsync(key,
-    async () =>
-    {
-        using (var conn = new SqlConnection(_connString))
-        {
-            await Task.Delay(5000);
-            var result = await conn.ExecuteScalarAsync<double?>(
-                "select avg(Temperature) from Record where City = @City",
-                new { City = city });
-            return result;
-        }
-    });
-```
-
-### 针对场景2
+### 确保缓存和数据库的最终一致性：
 ```cs
 using (var conn = new SqlConnection(_connString))
 {
